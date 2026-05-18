@@ -8,9 +8,13 @@ The project is built with Anchor and includes a Rust LiteSVM integration test th
 
 Program ID:
 
+
 ```text
 AuD9H9gzoj3vdETqjbZeotaaHnDDoQNB1XtuWB983Hsi
 ```
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/45e25e5e-d913-4052-ab59-4f4338bf68d5" />
+
 
 Core instructions:
 

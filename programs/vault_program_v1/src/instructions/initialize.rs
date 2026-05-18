@@ -1,10 +1,9 @@
-use anchor_lang::prelude::*;
 use crate::state::VaultState;
+use anchor_lang::prelude::*;
 
 #[derive(Accounts)]
 
 pub struct Initialize<'info> {
- 
     #[account(mut)]
     pub user: Signer<'info>,
 
@@ -23,8 +22,7 @@ pub struct Initialize<'info> {
     )]
     pub vault: SystemAccount<'info>,
 
-    pub system_program: Program<'info, System>
-
+    pub system_program: Program<'info, System>,
 }
 
 impl<'info> Initialize<'info> {
@@ -34,8 +32,5 @@ impl<'info> Initialize<'info> {
         self.vault_state.state_bump = bumps.vault_state;
 
         Ok(())
-
     }
-
-    
 }

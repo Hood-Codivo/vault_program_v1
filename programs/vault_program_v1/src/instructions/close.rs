@@ -1,5 +1,8 @@
-use anchor_lang::{prelude::*, system_program::{transfer, Transfer}};
 use crate::state::VaultState;
+use anchor_lang::{
+    prelude::*,
+    system_program::{transfer, Transfer},
+};
 
 #[derive(Accounts)]
 
@@ -15,18 +18,18 @@ pub struct Close<'info> {
     pub vault: SystemAccount<'info>,
 
     #[account(
-
-        seeds = [b"vault", vault_state.key().as_ref()],
-        bump = vault_state.state_bump
+        mut,
+        seeds = [b"state", user.key().as_ref()],
+        bump = vault_state.state_bump,
+        close = user,
     )]
     pub vault_state: Account<'info, VaultState>,
 
     system_program: Program<'info, System>,
-
 }
 
 impl<'info> Close<'info> {
-    pub fn withdraw(&mut self) -> Result<()> {
+    pub fn close(&mut self) -> Result<()> {
         let cpi_accounts = Transfer {
             from: self.vault.to_account_info(),
             to: self.user.to_account_info(),
